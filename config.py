@@ -1,10 +1,10 @@
 import os
 
 class Config:
-    '''
-    General configuration parent class
-    '''
-    pass
+    
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:New Password@localhost/watchlist'
+
+    
 
 class ProdConfig(Config):
     '''
