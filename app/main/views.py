@@ -3,7 +3,7 @@ from flask import render_template,redirect,url_for
 from . import main
 from .forms import RegisterForm
 from ..models import User
-from . import db
+from ..extensions import db
 
 @main.route('/')
 @main.route('/home')
