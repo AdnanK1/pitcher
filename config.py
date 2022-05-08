@@ -1,8 +1,9 @@
-import os
+
 
 class Config:
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:New Password@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:New Password@localhost/pitcher'
+    SECRET_KEY = '61cc731520a271e4fc6d3926'
 
     
 
