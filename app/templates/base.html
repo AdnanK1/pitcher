@@ -20,6 +20,13 @@
         {% include 'navbar.html' %}
     {% endblock %}
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+
+      {% endif %}
+
+    {% endwith %}
+
     <!--Content-->
     {% block content %}
 
