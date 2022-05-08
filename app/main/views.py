@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for
 from . import main
-from main.forms import RegisterForm
+from .forms import RegisterForm
 
 @main.route('/')
 @main.route('/home')
