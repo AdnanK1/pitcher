@@ -19,4 +19,5 @@ def register_page():
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('home_page'))
+        
     return render_template('register.html', form=form)

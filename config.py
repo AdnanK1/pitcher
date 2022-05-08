@@ -2,7 +2,7 @@
 
 class Config:
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:New Password@localhost/pitcher'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:adnank720@localhost/pitcher'
     SECRET_KEY = '61cc731520a271e4fc6d3926'
 
     
