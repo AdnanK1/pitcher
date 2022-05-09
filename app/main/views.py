@@ -3,7 +3,7 @@ from . import main
 from .forms import RegisterForm, LoginForm
 from ..models import User
 from ..extensions import db
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 @main.route('/')
 @main.route('/home')
@@ -39,3 +39,9 @@ def login_page():
             flash('Username and password are not matching! Please try again', category='danger')
 
     return render_template('login.html', form=form)
+
+@main.route('/logout')
+def logout_page():
+    logout_user()
+    flash('You have been logged out!',category= 'info')
+    return redirect(url_for('main.home_page'))
