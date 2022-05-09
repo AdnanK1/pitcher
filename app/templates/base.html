@@ -24,9 +24,6 @@
       {% if messages %}
         {% for category, message in messages %}
           <div class="alert alert-{{ category }}">
-            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"> &times; </span>
-            </button>
             {{ message }}
           </div>
         {% endfor %}
