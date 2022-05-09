@@ -11,6 +11,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=30), nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch_id'))
 
     @property
     def password(self):
@@ -22,4 +23,10 @@ class User(db.Model,UserMixin):
 
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash,attempted_password)
+
+class Pitch(db.Model):
+    __tablename__ = 'pitch'
+    id = db.Column(db.Integer(),primary_key = True)
+    pitches = db.Column(db.String(length=255), nullable=False,unique=True)
+    users = db.relationship('User', backref= 'role', lazy= 'dynamic')
 

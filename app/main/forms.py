@@ -1,7 +1,7 @@
 import email
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField,SubmitField
+from wtforms import StringField, PasswordField,SubmitField,TextAreaField
 from wtforms.validators import Length, EqualTo, Email, DataRequired,ValidationError
 from ..models import User
 
@@ -27,6 +27,10 @@ class LoginForm(FlaskForm):
     username = StringField(label= 'Username:', validators=[DataRequired()])
     password = PasswordField(label= 'Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
+
+class PitchForm(FlaskForm):
+    name = StringField(label='name' ,validators=[DataRequired()])
+    text = TextAreaField(label='Pitch:')
 
 
 

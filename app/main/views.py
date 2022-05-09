@@ -45,3 +45,8 @@ def logout_page():
     logout_user()
     flash('You have been logged out!',category= 'info')
     return redirect(url_for('main.home_page'))
+
+@main.route('/pitch')
+def pitch_page():
+
+    return render_template('pitch.html')
