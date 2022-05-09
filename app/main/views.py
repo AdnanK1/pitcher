@@ -1,9 +1,9 @@
-import email
 from flask import render_template,redirect,url_for, flash
 from . import main
 from .forms import RegisterForm, LoginForm
 from ..models import User
 from ..extensions import db
+from flask_login import login_user
 
 @main.route('/')
 @main.route('/home')
@@ -29,5 +29,13 @@ def register_page():
 @main.route('/login', methods=['GET','POST'])
 def login_page():
     form = LoginForm()
+    if form.validate_on_submit():
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash(f'You are loggied in as:{attempted_user.username}',category='success')
+            return redirect(url_for('main.home_page'))
+        else:
+            flash('Username and password are not matching! Please try again', category='danger')
 
     return render_template('login.html', form=form)

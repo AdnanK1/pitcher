@@ -1,7 +1,7 @@
 from flask import Flask
 from config import config_options
 from .main import views
-from .extensions import db,bcrypt
+from .extensions import db,bcrypt,login_manager
 
 
 def create_app(config_name):
@@ -10,6 +10,7 @@ def create_app(config_name):
     #Initializing flask extensions
     db.init_app(app)
     bcrypt.init_app(app)
+    login_manager.init_app(app)
 
     #Creating the app configurations
     app.config.from_object(config_options[config_name])
