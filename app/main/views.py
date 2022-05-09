@@ -1,7 +1,7 @@
 import email
 from flask import render_template,redirect,url_for, flash
 from . import main
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 from ..models import User
 from ..extensions import db
 
@@ -28,5 +28,6 @@ def register_page():
 
 @main.route('/login', methods=['GET','POST'])
 def login_page():
+    form = LoginForm()
 
-    return render_template('login.html')
+    return render_template('login.html', form=form)
