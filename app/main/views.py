@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for, flash
 from . import main
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm,PitchForm
 from ..models import User
 from ..extensions import db
 from flask_login import login_user, logout_user
@@ -48,5 +48,6 @@ def logout_page():
 
 @main.route('/pitch')
 def pitch_page():
+    form = PitchForm()
 
-    return render_template('pitch.html')
+    return render_template('pitch.html', form=form)
