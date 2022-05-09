@@ -1,5 +1,5 @@
 from enum import unique
-from .extensions import db
+from .extensions import db, bcrypt
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -8,5 +8,11 @@ class User(db.Model):
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
 
-    def __repr__(self):
-        return f'User{self.username}'
+    @property
+    def password(self):
+        return self.password
+
+    @password.setter
+    def password(self,plain_text_password):
+        self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+
