@@ -27,8 +27,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label='Sign in')
 
 class PitchForm(FlaskForm):
-    name = StringField(label='Your name:' ,validators=[DataRequired()])
-    text = TextAreaField(label='Pitch:')
+    pitch = TextAreaField(label='Pitch:',validators=[DataRequired()])
     submit = SubmitField(label='Add Pitch')
 
 

@@ -1,7 +1,7 @@
 from flask import render_template,redirect,url_for, flash
 from . import main
 from .forms import RegisterForm, LoginForm,PitchForm
-from ..models import User
+from ..models import User,Pitch
 from ..extensions import db
 from flask_login import login_user, logout_user
 
@@ -46,8 +46,13 @@ def logout_page():
     flash('You have been logged out!',category= 'info')
     return redirect(url_for('main.home_page'))
 
-@main.route('/pitch')
+@main.route('/pitch',methods=['GET','POST'])
 def pitch_page():
     form = PitchForm()
+    if form.validate_on_submit():
+        pitch_created = Pitch(pitch=form.pitch.data)
+        db.session.add(pitch_created)
+        db.session.commit()
+        return redirect(url_for('main.home_page'))
 
     return render_template('pitch.html', form=form)
