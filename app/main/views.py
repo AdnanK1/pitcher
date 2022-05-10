@@ -3,6 +3,7 @@ from . import main
 from .forms import RegisterForm, LoginForm,PitchForm
 from ..models import User,Pitch
 from ..extensions import db
+from ..email import mail_message
 from flask_login import login_user, logout_user
 
 @main.route('/')
@@ -19,6 +20,8 @@ def register_page():
         user_to_create = User(username=form.username.data,email=form.email.data,password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        #mail_message("Welcome to Pitcher","email/welcome_user",user_to_create.email,user=user_to_create)
+
         return redirect(url_for('main.home_page'))
     
     if form.errors != {}:
