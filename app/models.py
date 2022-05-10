@@ -28,5 +28,6 @@ class User(db.Model,UserMixin):
 class Pitch(db.Model):
     __tablename__ = 'pitch'
     id = db.Column(db.Integer(),primary_key = True)
+    categories = db.Column(db.String(),nullable=False)
     pitches = db.Column(db.String(length=255), nullable=False,unique=True)
     pitch_id = db.Column(db.Integer(), db.ForeignKey('users.id'))

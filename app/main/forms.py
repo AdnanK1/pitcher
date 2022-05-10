@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField,SubmitField,TextAreaField
+from wtforms import StringField, PasswordField,SubmitField,TextAreaField,SelectField
 from wtforms.validators import Length, EqualTo, Email, DataRequired,ValidationError
-from ..models import User
+from ..models import User,Pitch
 
 class RegisterForm(FlaskForm):
     username = StringField(label='Username:',validators=[Length(min=2, max=25), DataRequired()])
@@ -27,6 +27,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label='Sign in')
 
 class PitchForm(FlaskForm):
+    category = SelectField(label='Add pitch category',choices = [('Pick-up Lines','Pick-up Lines'),('Sales','Sales'),('Innovation','Innovation'),('Humanity','Humanity'),('Music','Music'),('Tech','Tech')],validators=[DataRequired()]) 
     pitch = TextAreaField(label='Pitch:',validators=[DataRequired()])
     submit = SubmitField(label='Add Pitch')
 

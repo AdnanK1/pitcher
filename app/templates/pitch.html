@@ -12,6 +12,9 @@ Write a pitch
             Write your Pitch here
         </h1>
         <br>
+        {{ form.category.label() }}
+        {{ form.category(class='form-control') }}
+        <br>
         {{ form.pitch.label() }}
         {{ form.pitch(class='form-control', placeholder='Write your pitch here.') }}
         <br>
