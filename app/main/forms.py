@@ -32,7 +32,10 @@ class PitchForm(FlaskForm):
     submit = SubmitField(label='Add Pitch')
 
 class CommentForm(FlaskForm):
+    name = StringField(label='Comment by:',validators=[Length(min=2, max=25), DataRequired()])
     comment = TextAreaField(label='Please add your comment',validators=[DataRequired()])
+    submit = SubmitField(label='Submit')
+
 
 
 

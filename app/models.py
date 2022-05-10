@@ -36,6 +36,7 @@ class Pitch(db.Model):
 class Comment(db.Model):
     __tablename__ = 'comment'
     id = db.Column(db.Integer(), primary_key = True)
+    name = db.Column(db.String(),nullable=False,unique=True )
     comment = db.Column(db.String(),nullable=False)
     comments = db.relationship('User', backref= 'comment', lazy= 'dynamic')
     
