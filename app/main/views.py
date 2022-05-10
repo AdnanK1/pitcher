@@ -60,3 +60,8 @@ def pitch_page():
         return redirect(url_for('main.home_page'))
 
     return render_template('pitch.html', form=form)
+
+@main.route('/comment',methods=['GET','POST'])
+def comment_page():
+
+    return render_template('comment.html')
