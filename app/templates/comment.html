@@ -1,8 +1,24 @@
 {% extends 'base.html'%}
-{% block title%}
-
-{% endblock %}
 <!--Body-->
 {% block content %}
+<div class="container">
+    <form method="POST" class="form-control">
+        {{ form.hidden_tag() }}
+        <br>
+        <br>
+        <h1 class="h3 mb-3 font-weight-normal">
+            Login Here
+        </h1>
+        <br>
+        {{ form.name.label() }}
+        {{ form.name(class='form-control',placeholder= 'Your Name:') }}
+        <br>
+        {{ form.comment.label() }}
+        {{ form.comment(class='form-control',placeholder= 'Leave your comment here:') }}
 
+        <br>
+        {{ form.submit(class='btn btn-lg btn-block btn-primary') }}
+
+    </form>
+</div>
 {% endblock %}

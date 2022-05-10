@@ -5,10 +5,25 @@ Home Page
 <!--Body-->
 {% block content %}
 <section class="container">
-    <body>
+    
         <h1 class="h3 mb-3 font-weight-normal">
             Here are the Pitches
         </h1>
+        {% if current_user.is_authenticated %}
+          {% for pitch in pitches %}
+          <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{pitch.category}}</h5>
+                    <p class="card-text">{{pitch.pitch}}</p>
+                    <a href="{{ url_for('main.comment_page') }}" class="btn btn-primary">Comment</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+        {% else %}
         {% for pitch in pitches %}
         <div class="row">
             <div class="col-sm-6">
@@ -16,13 +31,23 @@ Home Page
                 <div class="card-body">
                   <h5 class="card-title">{{pitch.category}}</h5>
                   <p class="card-text">{{pitch.pitch}}</p>
-                  <a href="{{ url_for('main.comment_page') }}" class="btn btn-primary">Comment</a>
+                  <a href="{{ url_for('main.login_page') }}" class="btn btn-primary">Please log in to comment and write your own pitches</a>
                 </div>
               </div>
             </div>
         </div>
         {% endfor %}
-    </body>
+        {%endif%}
 </section>
+<div class="container">
+  {% for comment in comments %}
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">{{comment.name}}</h6>
+            <p>{{comment.comment}}</p>
+          </div>
+        </div>
+  {% endfor %}
+</div>
 
 {% endblock %}

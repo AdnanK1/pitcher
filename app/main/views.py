@@ -1,7 +1,7 @@
 from flask import render_template,redirect,url_for, flash
 from . import main
-from .forms import RegisterForm, LoginForm,PitchForm
-from ..models import User,Pitch
+from .forms import RegisterForm, LoginForm,PitchForm,CommentForm
+from ..models import User,Pitch,Comment
 from ..extensions import db
 from ..email import mail_message
 from flask_login import login_user, logout_user
@@ -10,6 +10,7 @@ from flask_login import login_user, logout_user
 @main.route('/home')
 def home_page():
     pitches = Pitch.query.all()
+    comments = Comment.query.all()
 
     return render_template('home.html',pitches=pitches)
 
@@ -63,5 +64,11 @@ def pitch_page():
 
 @main.route('/comment',methods=['GET','POST'])
 def comment_page():
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment_created = Comment(name=form.name.data,comment=form.comment.data)
+        db.session.add(comment_created)
+        db.session.commit()
+        return redirect(url_for('main.home_page'))
 
-    return render_template('comment.html')
+    return render_template('comment.html', form = form)
