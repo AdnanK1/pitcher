@@ -11,7 +11,10 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=30), nullable=False,unique=True)
     email = db.Column(db.String(length=50),nullable=False,unique=True)
     password_hash = db.Column(db.String(length=60),nullable=False)
-    #comment_id = db.Column(db.Integer(), db.ForeignKey('comment.id'))
+    user_comments = db.relationship('Comment', backref= 'user')
+    user_pitch = db.relationship('Pitch', backref= 'user')
+    
+    
     
     @property
     def password(self):
@@ -30,6 +33,7 @@ class Pitch(db.Model):
     id = db.Column(db.Integer(),primary_key = True)
     category = db.Column(db.String(),nullable=False)
     pitch = db.Column(db.String(), nullable=False,unique=True)
+    user_id = db.Column(db.Integer(),db.ForeignKey('users.id'))
     
     
 
@@ -38,5 +42,5 @@ class Comment(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(),nullable=False,unique=True )
     comment = db.Column(db.String(),nullable=False)
-    #comments = db.relationship('User', backref= 'comment', lazy= 'dynamic')
+    user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     

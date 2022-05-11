@@ -4,7 +4,7 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:adnank720@localhost/pitcher'
-    SECRET_KEY = '61cc731520a271e4fc6d3926'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
