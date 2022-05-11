@@ -13,8 +13,6 @@ class User(db.Model,UserMixin):
     password_hash = db.Column(db.String(length=60),nullable=False)
     #comment_id = db.Column(db.Integer(), db.ForeignKey('comment.id'))
     
-    
-
     @property
     def password(self):
         return self.password
@@ -26,11 +24,13 @@ class User(db.Model,UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash,attempted_password)
 
+
 class Pitch(db.Model):
     __tablename__ = 'pitch'
     id = db.Column(db.Integer(),primary_key = True)
     category = db.Column(db.String(),nullable=False)
     pitch = db.Column(db.String(), nullable=False,unique=True)
+    
     
 
 class Comment(db.Model):
