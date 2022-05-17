@@ -2,7 +2,6 @@
 Pitcher is an app that allows people to communicate their thoughts in one minute. Users can submit suggestions by category, vote on them, and leave feedback in the form of comments.
 The most recent pitches will be displayed first.
 
-# Setup/Installation
 
 # Deployment
 >This is the deployment of the project https://pitcher-ip3.herokuapp.com/
