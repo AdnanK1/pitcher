@@ -3,7 +3,6 @@ import os
 class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:adnank720@localhost/pitcher'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     
     #  email configurations
@@ -17,23 +16,12 @@ class Config:
     
 
 class ProdConfig(Config):
-    '''
-    Production  configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
+    pass
     
 
 
 class DevConfig(Config):
-    '''
-    Development  configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://adnan:adnank720@localhost/pitcher'
     DEBUG = True
 
 config_options = {

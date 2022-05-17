@@ -5,7 +5,7 @@ The most recent pitches will be displayed first.
 # Setup/Installation
 
 # Deployment
->This is the deployment of the project https://git.heroku.com/pitcher-ip3.git
+>This is the deployment of the project https://pitcher-ip3.herokuapp.com/
 
 # Known Bugs
 

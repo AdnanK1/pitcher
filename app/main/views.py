@@ -12,7 +12,7 @@ def home_page():
     pitches = Pitch.query.all()
     comments = Comment.query.all()
 
-    return render_template('home.html',pitches=pitches)
+    return render_template('home.html',pitches=pitches,comments=comments)
 
 @main.route('/register', methods=['GET','POST'])
 def register_page():
